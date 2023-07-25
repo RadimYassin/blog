@@ -8,7 +8,7 @@ const context =useContext(contextP)
 
 
 if(!context){
-    throw Error("error in auth context")
+    throw Error("error in data context")
   }
 
   return context
