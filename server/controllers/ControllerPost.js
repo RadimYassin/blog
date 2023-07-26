@@ -13,9 +13,13 @@ const getPostsForUser=async(req,res)=>{
 
 //getALL POSTS
 const getAllPosts=async(req,res)=>{
-
-    const post = await Post.find({}).sort()
-    res.json({data:post})
+      try {
+        const post = await Post.find({},{updatedAt:false,createdAt:false,__v:false}).sort()
+        res.json(post)
+      } catch (error) {
+        res.status(404).json({message:"error"})
+      }
+   
 }
 //get a single post
 const getPost=async(req,res)=>{

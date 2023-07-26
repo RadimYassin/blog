@@ -1,11 +1,12 @@
 
 
 
+const { log } = require("console")
 const User=require("../models/User")
 const jwt=require("jsonwebtoken")
 
 const createToken=(id)=>{
-    return jwt.sign({id},"agsgsys",{expiresIn:"7d"})
+    return jwt.sign({id},"radim",{expiresIn:"7d"})
 }
 
 const UserRegister=async(req,res)=>{
@@ -29,6 +30,7 @@ const Userlogin=async(req,res)=>{
         const user = await User.login(email,password)
        const token= createToken(user._id)
       res.status(200).json({token,userId:user._id});
+      console.log(token)
     } catch (error) {
         res.json({message:error.message});
     }
