@@ -15,8 +15,9 @@ const nav=useNavigate()
 
         try {
             const res=await axios.post("http://localhost:4000/api/user/login",data)
-
+            console.log(res.data);
             setCookies("access_token",res.data.token)
+         
             window.localStorage.setItem("userId",res.data.userId)
             nav("/")
         } catch (error) {

@@ -2,6 +2,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Container } from "./style"
 import { useCookies } from 'react-cookie';
+import { useData } from '../../hooks/useData';
 function NavbarC() {
 
   const [cookies, setCookies] = useCookies(["access_token"])
@@ -11,7 +12,8 @@ function NavbarC() {
     nav("/login")
   }
 
-
+const {posts,loading,error}=useData()
+console.log(posts,loading,error);
   return (
     <Container>
       <div className='content'>
