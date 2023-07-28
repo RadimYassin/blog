@@ -1,55 +1,122 @@
-// import React from 'react'
-// import Button from 'react-bootstrap/Button';
-// import Card from 'react-bootstrap/Card';
-// import Placeholder from 'react-bootstrap/Placeholder';
-// import { Main, Img } from '../Post/style'
+import React from 'react'
+import { Container, Main, Img } from './style'
+import img from "./img.png"
 
-// export default function PlaceholderComponent() {
-//     return (
-//     //     <Main>
-//     //         <div className="d-flex justify-content-around">
-                
+export default function PlaceholderComponent() {
+    return (
+        <Container>
+            <Main>
+                <div class="card flex-md-row  box-shadow h-md-350" aria-hidden="true">
+                    <Img src={img} class="card-img-top" alt="..." />
+                    <div class="card-body p-4">
+                        <h5 class="card-title placeholder-glow">
+                            <span class="placeholder col-3"></span>
+                        </h5>
+                        <h6 class="card-title placeholder-glow">
+                            <span class="placeholder col-2"></span>
+                        </h6>
+                        <p class="card-text placeholder-glow">
+                            <span class="placeholder col-7"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-6"></span>
+                            <span class="placeholder col-8"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-6"></span>
+                            <span class="placeholder col-8"></span>
+                        </p>
 
-//     //         <div className="w-100">
-//     //         <div className="card flex-md-row  box-shadow h-md-350">
-//     //             <Img className="card-img-left " alt="IMG"  data-holder-rendered="true" />
-//     //             <div className="card-body d-flex flex-column align-items-start p-5 pb-0">
-//     //                 <strong className="d-inline-block mb-2 h3"> <Placeholder as={Card.Title} animation="glow">
-//     //                         <Placeholder xs={6} />
-//     //                     </Placeholder></strong>
-//     //                 {/* <h3 className="mb-0">
-//     //     <span className="text-dark" > dave</span>
-//     // </h3> */}
-//     //                 <div className="mb-1 text-muted my-1"> ....</div>
-//     //                 <p className="card-text mb-auto my-2">
-//     //                 <Placeholder  as={Card.Text} animation="glow">
-//     //                         <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
-//     //                         <Placeholder xs={6} /> <Placeholder xs={8} />
-//     //                     </Placeholder>
-//     //                 </p>
+                    </div>
+                </div>
+
+            </Main>
+            <Main>
+                <div class="card flex-md-row  box-shadow h-md-350" aria-hidden="true">
+                    <Img src={img} class="card-img-top" alt="..." />
+                    <div class="card-body p-4">
+                        <h5 class="card-title placeholder-glow">
+                            <span class="placeholder col-3"></span>
+                        </h5>
+                        <h6 class="card-title placeholder-glow">
+                            <span class="placeholder col-2"></span>
+                        </h6>
+                        <p class="card-text placeholder-glow">
+                            <span class="placeholder col-7"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-6"></span>
+                            <span class="placeholder col-8"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-6"></span>
+                            <span class="placeholder col-8"></span>
+                        </p>
+
+                    </div>
+                </div>
+
+            </Main>
+
+            <Main>
+                <div class="card flex-md-row  box-shadow h-md-350" aria-hidden="true">
+                    <Img src={img} class="card-img-top" alt="..." />
+                    <div class="card-body p-4">
+                        <h5 class="card-title placeholder-glow">
+                            <span class="placeholder col-3"></span>
+                        </h5>
+                        <h6 class="card-title placeholder-glow">
+                            <span class="placeholder col-2"></span>
+                        </h6>
+                        <p class="card-text placeholder-glow">
+                            <span class="placeholder col-7"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-6"></span>
+                            <span class="placeholder col-8"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-6"></span>
+                            <span class="placeholder col-8"></span>
+                        </p>
+
+                    </div>
+                </div>
+
+            </Main>
+            <Main>
+                <div class="card flex-md-row  box-shadow h-md-350" aria-hidden="true">
+                    <Img src={img} class="card-img-top" alt="..." />
+                    <div class="card-body p-4">
+                        <h5 class="card-title placeholder-glow">
+                            <span class="placeholder col-3"></span>
+                        </h5>
+                        <h6 class="card-title placeholder-glow">
+                            <span class="placeholder col-2"></span>
+                        </h6>
+                        <p class="card-text placeholder-glow">
+                            <span class="placeholder col-7"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-6"></span>
+                            <span class="placeholder col-8"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-6"></span>
+                            <span class="placeholder col-8"></span>
+                        </p>
+
+                    </div>
+                </div>
+
+            </Main>
+        </Container>
 
 
 
-//     //                 <div className='w-100 d-flex justify-content-between   '>
-
-//     //                     {/* <AiOutlineLike />
-//     //                     <VscComment />
-//     //                     <AiOutlineInfoCircle /> */}
-
-//     //                 </div>
-//     //             </div>
-
-//     //         </div>
-//     //     </div>
-
-                   
-                       
-                      
-                
-//     //         </div>
-
-
-//     //     </Main>
-
-//     )
-// }
+    )
+}

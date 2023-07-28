@@ -1,19 +1,25 @@
 
 import { Link, useNavigate } from 'react-router-dom';
 import { Container } from "./style"
-import { useCookies } from 'react-cookie';
-import { useData } from '../../hooks/useData';
+import { useAuth } from '../../hooks/useAuth';
 function NavbarC() {
-
-  const [cookies, setCookies] = useCookies(["access_token"])
+const {dispatch,user }=useAuth()
   const nav = useNavigate()
   const handelclick = () => {
-    setCookies("access_token", "")
+ // remove user from storage
+ localStorage.removeItem("userId")
+
+ // dispatch logout action
+
+ dispatch({type:"LOGOUT"})
     nav("/login")
   }
 
-const {posts,loading,error}=useData()
-console.log(posts,loading,error);
+
+
+
+
+console.log(user);
   return (
     <Container>
       <div className='content'>
@@ -21,24 +27,26 @@ console.log(posts,loading,error);
           <h3>Blog</h3>
         </div>
         <nav>
-
-          {
-            !cookies.access_token ? (
-
-              <>
-
-
-                <Link to={"login"}>login</Link>
+         {
+          user && <>
+                 <Link to={"/newPost"}>new post</Link>
+                <button className='logOut' onClick={handelclick} >   logout</button>
+          
+          </> 
+         }
+   {
+          user==null && <>
+               <Link to={"login"}>login</Link>
                 <Link to={"register"}>register</Link>
+          
+          </> 
+         }
+               
 
-              </>
-            ) :
-              <>
-                <Link to={"/newPost"}>new post</Link>
-                <button className='logOut' onClick={handelclick}>   logout</button>
-              </>
 
-          }
+            
+
+          
 
 
 

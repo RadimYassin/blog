@@ -3,19 +3,27 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { AppProvider } from './Context/Context';
+import { AppProviderAuth } from './Context/authContext/authContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppProvider>
-    <BrowserRouter>
-    <App />
+      <BrowserRouter>
+
+      <AppProvider>
+      <AppProviderAuth>
+      <App />
+      </AppProviderAuth>
+         
+     
+
+
+      </AppProvider>
+
+
     </BrowserRouter>
 
 
-    </AppProvider>
-   
-  
   </React.StrictMode>
 );
 
