@@ -1,7 +1,3 @@
-
-
-
-const { log } = require("console")
 const User=require("../models/User")
 const jwt=require("jsonwebtoken")
 
@@ -29,8 +25,8 @@ const Userlogin=async(req,res)=>{
         const {email,password}=req.body
         const user = await User.login(email,password)
        const token= createToken(user._id)
-      res.status(200).json({token,userId:user._id});
-      console.log(token)
+      res.status(200).json({token,userId:user._id,status:200});
+   
     } catch (error) {
         res.json({message:error.message});
     }
