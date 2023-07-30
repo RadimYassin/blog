@@ -13,9 +13,7 @@ const commentSchema = new mongoose.Schema({
     ref: 'Post',
   },
   dateC:{
-    type:Date,
-    required:true,
-    default:Date.now
+    type: Date, default: Date.now
   }
 });
 
