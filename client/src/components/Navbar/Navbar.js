@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Container } from "./style"
 import { useAuth } from '../../hooks/useAuth';
 function NavbarC() {
+  
 const {dispatch,user }=useAuth()
   const nav = useNavigate()
   const handelclick = () => {

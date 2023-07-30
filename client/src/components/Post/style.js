@@ -11,7 +11,11 @@ export const Main = styled.section`
       font-size:30px;
       margin-bottom:20px;
       margin-top:10px;
+
+      color:black;
+    
     }
+   
 
 `
 

@@ -3,6 +3,7 @@ import { AiOutlineLike, AiOutlineInfoCircle } from "react-icons/ai"
 import { VscComment } from "react-icons/vsc"
 
 import {  Main, Img } from './style'
+import { Link } from 'react-router-dom'
 export default function Post({item}) {
     return (
         <Main className='mt-2'>
@@ -27,7 +28,9 @@ export default function Post({item}) {
                     <div className='w-100 d-flex justify-content-between   '>
 
                         <AiOutlineLike />
-                        <VscComment />
+
+                         <Link to={`post/${item._id}`}> <VscComment /></Link>
+                     
                         <AiOutlineInfoCircle />
 
                     </div>

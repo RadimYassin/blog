@@ -27,7 +27,7 @@ export const Img = styled.img`
 /* style={{ width: "200px", height: "250px" }} */
 width:350px;
 height:auto;
-@media screen and (max-width:960px){
+@media screen and (max-width:1060px){
   width:100%;
 
       

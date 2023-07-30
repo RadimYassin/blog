@@ -13,32 +13,41 @@ import { useCookies } from "react-cookie";
 // import { useFetch } from "./hooks/useFetch";
 import { useData } from "./hooks/useData";
 import axios from "axios";
+import PostDetails from "./components/PostDetails/PostDetails";
+import { useAuth } from "./hooks/useAuth";
 
 function App() {
-const {dispatch}=useData()
+  const { dispatch } = useData()
 
 
 
 
 
 
-  const [cookies, setCookies] = useCookies(["access_token"])
+const {user}=useAuth()
   return (
     <Container className="App">
-       <NavbarC/>
+      <NavbarC />
 
 
-       <Routes>
-           <Route index path="/" element={<Home/>}/>
-           <Route path="login" element={<Login/>}/>
-           <Route path="register" element={<Register/>}/>
-           {
-            cookies.access_token &&    <Route path="newpost" element={<NewPost/>}/>
-           }
-        
-           <Route path="*" element={<NotFound/>}/>
-       </Routes>
-  
+      <Routes>
+        <Route index path="/" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        {
+         user &&
+
+          <>
+            <Route path="newpost" element={<NewPost />} />
+            <Route path="post/:id" element={<PostDetails />} />
+          </>
+
+        }
+
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
     </Container>
   );
 }
@@ -46,7 +55,7 @@ const {dispatch}=useData()
 export default App;
 
 
-export const Container=styled.div`
+export const Container = styled.div`
 /* *{
   padding:0;
   margin:0;

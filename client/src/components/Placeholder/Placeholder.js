@@ -6,8 +6,11 @@ export default function PlaceholderComponent() {
     return (
         <Container>
             <Main>
-                <div class="card flex-md-row  box-shadow h-md-350" aria-hidden="true">
+                <div class="card d-flex flex-md-row justify-content-center box-shadow h-md-350" aria-hidden="true">
+                    <div style={{width:"100%"}}>
                     <Img src={img} class="card-img-top" alt="..." />
+                    </div>
+                
                     <div class="card-body p-4">
                         <h5 class="card-title placeholder-glow">
                             <span class="placeholder col-3"></span>
