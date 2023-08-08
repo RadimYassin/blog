@@ -8,8 +8,12 @@ export default (state,action)=> {
       case "Fetch_Error":
             return {...state,posts:[],loading:true,error:action.message}
       
+      
+      case "Fetch_Comment":
+                  return {...state,Comment:action.payload}
 
-
+       case "Add_Comment":
+            return {...state,Comment:[...state.Comment,action.payload]}        
       default: return state;
           
     }

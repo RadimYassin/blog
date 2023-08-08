@@ -34,12 +34,13 @@ const {user}=useAuth()
         <Route index path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="post/:id" element={<PostDetails />} />
         {
          user &&
 
           <>
             <Route path="newpost" element={<NewPost />} />
-            <Route path="post/:id" element={<PostDetails />} />
+           
           </>
 
         }

@@ -1,11 +1,6 @@
 import { styled } from "styled-components";
 
-export const Container = styled.div`
- padding:30px;
 
-
-
-`
 
 export const Main = styled.section`
 
@@ -24,29 +19,6 @@ export const Main = styled.section`
     }
 
 `
-
-export const Img = styled.img`
-/* style={{ width: "200px", height: "250px" }} */
-width:350px;
-height:auto;
-@media screen and (max-width:1400px){
-  width:100%;
-
-      
-    }
-
-
-`
-
-
-export const Breadcrumb=styled.nav`
-  
-  margin:10px auto;
-  max-width:1400px;
-  padding:10px 0px;
-
-`
-
 
 export const Form = styled.form`
 
