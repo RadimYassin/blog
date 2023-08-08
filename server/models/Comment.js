@@ -5,7 +5,7 @@ const commentSchema = new mongoose.Schema({
   text: String,
   // You can add other properties specific to your Comment model here
   author: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: [mongoose.Schema.Types.Mixed],
     ref: 'User',
   },
   post: {

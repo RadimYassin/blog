@@ -30,8 +30,6 @@ const CreatePost=async(req,res)=>{
    newPost.save()
    res.status(200).json(newPost)
 }
-
-
 // select post with all comments
 const SelectPost=async(req,res)=>{
   
@@ -42,7 +40,7 @@ const post = await Post.find({_id:id},{updatedAt:0,__v:0});
  post.map(async(item) => {
   const comment= await Comment.find({post:item._id})
 
-  res.json({post:{item,comment}})
+  res.json({post:{info:item,comment}})
 
 
 })
