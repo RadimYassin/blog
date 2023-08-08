@@ -12,8 +12,10 @@ export default (state,action)=> {
       case "Fetch_Comment":
                   return {...state,Comment:action.payload}
 
-       case "Add_Comment":
-            return {...state,Comment:[...state.Comment,action.payload]}        
+      case "Add_Comment":
+            return {...state,Comment:[...state.Comment,action.payload]}     
+      case "delete_Comment":
+                  return {...state,Comment:state.Comment.filter(item => item._id!==action.payload)}        
       default: return state;
           
     }

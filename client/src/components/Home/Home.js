@@ -9,7 +9,7 @@ import axios from 'axios';
 export default function Home() {
 
 
-const {dispatch,posts,loading,Comment}=useData()
+const {dispatch,posts,loading}=useData()
 
        const fetchData = async () => {
           // Replace 'API_URL' with the actual URL of your API or backend endpoint

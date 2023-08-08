@@ -2,7 +2,7 @@ import React from 'react'
 import { AiOutlineLike, AiOutlineInfoCircle } from "react-icons/ai"
 import {Main, Img } from "./style"
 
-export default function Post({ data }) {
+export default function InfoPost({ data }) {
 
 
     return (

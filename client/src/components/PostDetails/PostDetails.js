@@ -5,27 +5,31 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Comment from '../Comment/Comment';
 import { useData } from '../../hooks/useData';
-import Post from './Post';
+import InfoPost from './InfoPost';
 export default function PostDetails() {
     const [data, setData] = useState([])
-    const [comment, setComment] = useState([])
-    const {dispatch}=useData()
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');    const {dispatch}=useData()
     const { id } = useParams()
     useEffect(() => {
 
-
+      
         axios.get(`http://localhost:4000/api/post/${id}`, {
 
         }).then((res) => {
             setData(res.data.post.info);
-            setComment(res.data.post.comment);
-            dispatch({type:"Fetch_Comment",payload:res.data.post.comment})
+            dispatch({type:"Fetch_Comment",payload:res.data.post.comment});
+            setLoading(false);
+
            
+    }).catch(error=>{
+        setLoading(false);
+setError(error)
     })
 
     }, [])
 
-
+   
     return (
         <Container>
 
@@ -40,8 +44,8 @@ export default function PostDetails() {
                     </Breadcrumb>
                  {/* post */}
 
-                    <Post  data={data}/>
-                    <Comment id={id}  Comment={comment} />
+                    <InfoPost  data={data}/>
+                    <Comment id={id} loading={loading} />
                     
                     
                     </>
