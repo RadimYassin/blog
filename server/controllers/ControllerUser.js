@@ -1,6 +1,7 @@
 const User=require("../models/User")
 const jwt=require("jsonwebtoken")
 
+
 const createToken=(id)=>{
     return jwt.sign({id},"radim",{expiresIn:"7d"})
 }
@@ -25,7 +26,7 @@ const Userlogin=async(req,res)=>{
         const {email,password}=req.body
         const user = await User.login(email,password)
        const token= createToken(user._id)
-      res.status(200).json({token,userId:user._id,status:200});
+      res.status(200).json({token,userId:user._id});
    
     } catch (error) {
         res.json({message:error.message});

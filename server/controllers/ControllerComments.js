@@ -19,6 +19,7 @@ const AddComment = async (req, res) => {
 
 
 }
+/// delete comment
 
 const delComment = async (req, res) => {
 
