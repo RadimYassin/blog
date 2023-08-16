@@ -6,31 +6,34 @@ import { useNavigate } from 'react-router-dom'
 export default function NewPost() {
     const [cookies, __] = useCookies(["access_token"])
     const [title, setTitle] = useState("")
-    const [author, setAuthor] = useState("")
+    const [image, setImage] = useState("")
     const [bio, setBio] = useState("")
-    const nav=useNavigate()
+    const nav = useNavigate()
 
     const handelSubmit = async (e) => {
         e.preventDefault()
 
-        const data = { title, bio }
-
-
+        const data = { title, bio, image }
 
         try {
             const res = await axios.post("http://localhost:4000/api/CreatePost", data, {
                 headers: {
-                    'Authorization': `Bearer ${cookies.access_token}`
+                    'Authorization': `Bearer ${cookies.access_token}`,
+
+                    "Content-Type": "multipart/form-data"
                 }
             })
-             if(res.status === 200){
+            if (res.status==200) {
                 nav("/")
-             }
+            }
+          
+       
+
         } catch (error) {
             console.log(error);
         }
 
-        console.log(cookies);
+
     }
     return (
         <Container>
@@ -40,16 +43,18 @@ export default function NewPost() {
                 </h1>
 
                 <div className='form-content'>
-                    <form onSubmit={handelSubmit}>
+                    <form onSubmit={(e)=>handelSubmit(e)} encType="multipart/form-data">
                         <div className="input-box">
                             <label className="input-label">title : </label>
                             <input placeholder="type title of post " value={title} onChange={e => setTitle(e.target.value)} className="input" name="text" type="text" />
                             <span className="input-helper">enter a title</span>
                         </div>
                         <div className="input-box">
-                            <label className="input-label">author : </label>
-                            <input placeholder="type author of post " value={author} onChange={e => setAuthor(e.target.value)} className="input" name="text" type="text" />
-                            <span className="input-helper">enter a author</span>
+
+                   
+                            <label className="input-label">image : </label>
+                            <input onChange={e => setImage(e.target.files[0])} className="input form-control" name="image" type="file" />
+
                         </div>
                         <div className="input-box">
                             <label className="input-label">Bio : </label>
@@ -58,7 +63,7 @@ export default function NewPost() {
                         </div>
 
                         <div className="input-btn">
-                            <button className='buttonCreate'>create Post </button>
+                            <button type='submit' className='buttonCreate'>create Post </button>
                         </div>
                     </form>
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { AiOutlineLike, AiOutlineInfoCircle } from "react-icons/ai"
-import {Main, Img } from "./style"
+import {Main, Img,Card } from "./style"
 
 export default function InfoPost({ data }) {
 
@@ -10,8 +10,8 @@ export default function InfoPost({ data }) {
             <Main >
 
                 <div className="w-100">
-                    <div className="card flex-md-row   h-md-350">
-                        <Img className="card-img-left " alt="IMG" src={data.image} data-holder-rendered="true" />
+                    <Card className="card">
+                        <Img className="card-img-left " alt="IMG" src={`/imgs/${data.image}`} data-holder-rendered="true" />
                         <div className="card-body d-flex flex-column align-items-start p-5 pb-0">
                             <strong className="d-inline-block mb-2 h3">{data.title}</strong>
 
@@ -29,7 +29,7 @@ export default function InfoPost({ data }) {
                             </div>
 
                         </div>
-                    </div>
+                    </Card>
                 </div>
             </Main>
         </div>

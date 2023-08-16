@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Main, Form } from "./style"
-import { useData } from '../../hooks/useData'
+import { useGcontext } from '../../hooks/useGcontext'
 import { useCookies } from 'react-cookie'
 import axios from 'axios'
 import { SpinnerRoundOutlined } from 'spinners-react';
 import { AiOutlineDelete } from 'react-icons/ai'
+import { useAuth } from '../../hooks/useAuth'
 export default function Comment({ id, loading }) {
     const [comment, setComment] = useState("")
-    const { dispatch, Comment } = useData()
+    const { dispatch, Comment } = useGcontext()
+
+    const {user}=useAuth()
     //cookies
     const [cookies, __] = useCookies(["access_token"])
     // send comments
@@ -35,7 +38,6 @@ export default function Comment({ id, loading }) {
 
     // delete commmet
 
-    console.log(loading);
 
     const handelDelete = async (id) => {
 
@@ -52,6 +54,7 @@ export default function Comment({ id, loading }) {
         }
 
     }
+    console.log(Comment);
     return (
         <Main>
 
@@ -73,7 +76,7 @@ export default function Comment({ id, loading }) {
                 }
 
                 {
-                    Comment.length > 0 && (
+                    (Comment.length > 0 && loading == false) && (
                         Comment.map((i) => {
                             return (<div key={i._id} className="card mb-4">
                                 <div className="card-body">
@@ -92,17 +95,18 @@ export default function Comment({ id, loading }) {
 
                                     <div className='d-flex justify-content-between align-items-center mt-1'>
                                         <span>{i.text}</span>
-                                        <AiOutlineDelete className='text-muted' onClick={() => handelDelete(i._id)} />
+                                        {
+                                            i.author[0]._id == user && <AiOutlineDelete className='text-muted' onClick={() => handelDelete(i._id)} />
+                                        }
+                                        
                                     </div>
                                 </div>
 
                             </div>)
                         })
-
                     )
                 }
-
-
+                {(Comment.length==0 && loading == false) && <p className='text-muted' style={{fontSize:"30px"}}>No comment yet !!</p>}
             </div>
 
 

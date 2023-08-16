@@ -26,7 +26,7 @@ export const Img = styled.img`
 /* style={{ width: "200px", height: "250px" }} */
 width:250px;
 height:auto;
-@media screen and (max-width:960px){
+@media  (max-width:1400px){
   width:100%;
 
       
@@ -35,3 +35,17 @@ height:auto;
 
 `
 
+export const Card = styled.div`
+/* style={{ width: "200px", height: "250px" }} */
+display:flex;
+justify-content:center;
+flex-direction:row;
+@media  (max-width:1400px){
+
+  flex-direction:column;
+
+      
+    }
+
+
+`

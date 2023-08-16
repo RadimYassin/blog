@@ -4,12 +4,13 @@ import { Link, useParams } from 'react-router-dom';
 
 import axios from 'axios';
 import Comment from '../Comment/Comment';
-import { useData } from '../../hooks/useData';
+import { useGcontext } from '../../hooks/useGcontext';
 import InfoPost from './InfoPost';
 export default function PostDetails() {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');    const {dispatch}=useData()
+    const [error, setError] = useState('');  
+     const {dispatch}=useGcontext()
     const { id } = useParams()
 
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { AiOutlineLike, AiOutlineInfoCircle } from "react-icons/ai"
 import { VscComment } from "react-icons/vsc"
 
-import {  Main, Img } from './style'
+import {  Main, Img,Card } from './style'
 import { Link } from 'react-router-dom'
 export default function Post({item}) {
     return (
@@ -10,8 +10,8 @@ export default function Post({item}) {
 
 
         <div className="w-100">
-            <div className="card flex-md-row  box-shadow h-md-350">
-                <Img className="card-img-left " alt="IMG" src={item.image} data-holder-rendered="true" />
+            <Card className="card  box-shadow ">
+                <Img className="card-img-left " alt="IMG" src={`/imgs/${item.image}`} data-holder-rendered="true" />
                 <div className="card-body d-flex flex-column align-items-start p-5 pb-0">
                     <strong className="d-inline-block mb-2 h3">{item.title}</strong>
                     {/* <h3 className="mb-0">
@@ -36,7 +36,7 @@ export default function Post({item}) {
                     </div>
                 </div>
 
-            </div>
+            </Card>
         </div>
     </Main>
     )

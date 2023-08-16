@@ -15,7 +15,7 @@ const nav=useNavigate()
         e.preventDefault()
             const res=await axios.post("http://localhost:4000/api/user/login",data)
 
-          if(res.data.status ==200){
+          if(res.data.userId){
             window.localStorage.setItem("userId",res.data.userId)
             dispatch({type:"LOGIN",payload:res.data.userId})
             setCookies("access_token",res.data.token)

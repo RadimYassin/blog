@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 
 import { Container } from './style'
 import Post from '../Post/Post'
-import { useData } from "../../hooks/useData";
+import { useGcontext } from "../../hooks/useGcontext";
 import PlaceholderComponent from '../Placeholder/Placeholder';
 import axios from 'axios';
 
 export default function Home() {
 
 
-const {dispatch,posts,loading}=useData()
+const {dispatch,posts,loading}=useGcontext()
 
        const fetchData = async () => {
           // Replace 'API_URL' with the actual URL of your API or backend endpoint
