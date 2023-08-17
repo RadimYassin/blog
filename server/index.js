@@ -1,10 +1,11 @@
+require('dotenv').config()
 const express=require("express");
+
 const mongose=require("mongoose");
 const bodyParser=require("body-parser");
 const PostRoutes=require("./routes/PostRoutes");
 const UserRoutes=require("./routes/UserRoutes");
 const CommentRoutes=require("./routes/CommentRoutes");
-const muller=require("multer");
 const cors = require('cors');
 
 
@@ -23,7 +24,7 @@ app.use("/api",PostRoutes);
 app.use("/api",UserRoutes);
 app.use("/api",CommentRoutes);
 // connect the db 
-mongose.connect("mongodb+srv://radim:12345@cluster0.dtfdcof.mongodb.net/Blog").then(()=>{
+mongose.connect(process.env.DB_URL).then(()=>{
 app.listen(4000,()=>{
     console.log("4000 listen");
 })

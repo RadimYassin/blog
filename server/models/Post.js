@@ -14,6 +14,7 @@ const blogSchema = new Schema({
       required:true
     
     },
+    like:[],
     datePb:{ type: Date, default: Date.now },
   },{timestamps:true});
 
