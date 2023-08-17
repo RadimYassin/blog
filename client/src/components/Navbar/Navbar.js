@@ -19,6 +19,8 @@ removeToken(['access_token']);
  dispatch({type:"LOGOUT"})
     nav("/login")
   }
+
+  console.log(cookies);
   return (
     <Container>
       <div className='content'>
