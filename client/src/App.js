@@ -9,15 +9,12 @@ import Register from "./components/Auth/Register";
 import Home from "./components/Home/Home";
 import NotFound from "./components/NotFound/NotFound";
 import NewPost from "./components/NewPost/NewPost";
-import { useCookies } from "react-cookie";
 // import { useFetch } from "./hooks/useFetch";
-import { useData } from "./hooks/useData";
 import axios from "axios";
 import PostDetails from "./components/PostDetails/PostDetails";
 import { useAuth } from "./hooks/useAuth";
 
 function App() {
-  const { dispatch } = useData()
 
 
 
