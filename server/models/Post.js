@@ -8,13 +8,8 @@ const blogSchema = new Schema({
     bio: {type:String,required:true},
     author:{type:String,required:true},
     image:{type:String},
-    idU:{
-      type:mongoose.Types.ObjectId,
-      ref:"User",
-      required:true
-    
-    },
-    like:[],
+    idU:{ type:mongoose.Types.ObjectId, ref:"User",required:true},
+    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] ,// Array of user IDs,
     datePb:{ type: Date, default: Date.now },
   },{timestamps:true});
 

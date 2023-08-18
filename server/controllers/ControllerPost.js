@@ -64,28 +64,47 @@ const deleteOne = async (req, res) => {
 // like a post 
 
 const likePost = async (req, res) => {
+  try {
+    const post = await Post.findById({ _id: req.params.id });
+    if (!post) {
+      return res.status(404).send('Post not found');
+    }
+    // Check if the user has already liked the post
+    if (post.likes.includes(req.user._id)) {
+      return res.json({ message: 'You have already liked this post' });
+    }
 
-  const { id } = req.params
-  const {_id}=req.user
+    post.likes.push(req.user._id); // Push user ID to likes array
+    await post.save();
 
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ message: "post not found" })
-
+    res.status(200).json({ message: 'like is ok' });
+  } catch (error) {
+    console.error('Error liking post:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
-
-  const post = await Post.findOne({ _id: id })
-
-
-const liked= await post.like.find(item =>item.id ===_id)
-
-res.status(200).json({ message: liked })
-    // check if user liked this post or not
-    post.like.push({id:req.user._id})
-    post.save()
-
-
 }
 
 
-module.exports = { getAllPosts, CreatePost, SelectPost, likePost }
+
+const unlikePost = async (req, res) => {
+  try {
+    const post = await Post.findById({ _id: req.params.id });
+    if (!post) {
+      return res.status(404).send('Post not found');
+    }
+    // Check if the user has not liked the post
+    if (!post.likes.includes(req.user._id)) {
+      return res.json({ message: 'You have not liked this post' });
+    }
+    post.likes = post.likes.filter(id => id.toString() !== req.user._id.toString())
+    await post.save();
+
+    res.status(200).json({ message: 'unlike is ok' });
+  } catch (error) {
+    console.error('Error liking post:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+}
+
+
+module.exports = { getAllPosts, CreatePost, SelectPost, likePost,unlikePost }
