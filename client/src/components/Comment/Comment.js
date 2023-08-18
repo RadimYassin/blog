@@ -54,7 +54,6 @@ export default function Comment({ id, loading }) {
         }
 
     }
-    console.log(Comment);
     return (
         <Main>
 

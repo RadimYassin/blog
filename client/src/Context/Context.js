@@ -20,7 +20,7 @@ export function AppProvider({children}) {
     const [state,dispatch]=useReducer(AppReducer,init)
 
     return(
-        <contextP.Provider value={{...state,dispatch}}>
+        <contextP.Provider value={{...state,dispatch}} >
             {children}
         </contextP.Provider>
     )

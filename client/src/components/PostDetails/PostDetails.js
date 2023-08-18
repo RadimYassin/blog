@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Comment from '../Comment/Comment';
 import { useGcontext } from '../../hooks/useGcontext';
-import InfoPost from './InfoPost';
+import Post from '../Post/Post';
 export default function PostDetails() {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true);
@@ -51,7 +51,7 @@ export default function PostDetails() {
                     </Breadcrumb>
                  {/* post */}
 
-                    <InfoPost  data={data}/>
+                    <Post  item={data}  CommentIcon={false}/>
                     <Comment id={id}  loading={loading} />
                     
                     

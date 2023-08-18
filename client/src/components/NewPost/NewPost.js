@@ -10,9 +10,8 @@ export default function NewPost() {
     const [bio, setBio] = useState("")
     const nav = useNavigate()
 
-    const handelSubmit = async (e) => {
-        e.preventDefault()
-
+    const handelSubmit = async (event) => {
+        event.preventDefault();
         const data = { title, bio, image }
 
         try {
@@ -23,7 +22,7 @@ export default function NewPost() {
                     "Content-Type": "multipart/form-data"
                 }
             })
-            if (res.status==200) {
+            if (res.status===200) {
                 nav("/")
             }
           
@@ -43,7 +42,7 @@ export default function NewPost() {
                 </h1>
 
                 <div className='form-content'>
-                    <form onSubmit={(e)=>handelSubmit(e)} encType="multipart/form-data">
+                    <form onSubmit={handelSubmit} encType="multipart/form-data">
                         <div className="input-box">
                             <label className="input-label">title : </label>
                             <input placeholder="type title of post " value={title} onChange={e => setTitle(e.target.value)} className="input" name="text" type="text" />

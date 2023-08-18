@@ -20,7 +20,6 @@ removeToken(['access_token']);
     nav("/login")
   }
 
-  console.log(cookies);
   return (
     <Container>
       <div className='content'>

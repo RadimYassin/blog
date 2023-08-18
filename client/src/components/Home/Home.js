@@ -23,6 +23,7 @@ const {dispatch,posts,loading}=useGcontext()
         fetchData();
       },[]);
 
+
   return (
     <Container>
       {
@@ -31,7 +32,7 @@ const {dispatch,posts,loading}=useGcontext()
       {
         posts.map(i => {
           return (
-            <Post key={i._id} item={i} />
+            <Post CommentIcon={true}  key={i._id} item={i} />
           )
         })
       }
