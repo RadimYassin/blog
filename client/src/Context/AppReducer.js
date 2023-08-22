@@ -34,9 +34,9 @@ export default (state,action)=> {
                         if (item._id ==action.payload) {
 
                    
-                              // if(item.likes.includes(action.user)){
-                              //       item.likes.filter(item => item!==action.user)   
-                              //      }     
+                              if(item.likes.includes(action.user)){
+                                     item.likes=item.likes.filter(item => item!==action.user)
+                                   }     
                                 
                         
                         }
