@@ -19,7 +19,7 @@ const nav=useNavigate()
             window.localStorage.setItem("userId",res.data.userId)
             dispatch({type:"LOGIN",payload:res.data.userId})
             setCookies("access_token",res.data.token)
-            nav("/")
+            nav("/home")
          
           }
     }

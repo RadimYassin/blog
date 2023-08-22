@@ -37,8 +37,8 @@ removeToken(['access_token']);
          }
    {
           user==null && <>
-               <Link to={"login"}>login</Link>
-                <Link to={"register"}>register</Link>
+               <Link to={"/login"}>login</Link>
+                <Link to={"/register"}>register</Link>
           
           </> 
          }

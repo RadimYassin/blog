@@ -10,7 +10,6 @@ import Home from "./components/Home/Home";
 import NotFound from "./components/NotFound/NotFound";
 import NewPost from "./components/NewPost/NewPost";
 // import { useFetch } from "./hooks/useFetch";
-import axios from "axios";
 import PostDetails from "./components/PostDetails/PostDetails";
 import { useAuth } from "./hooks/useAuth";
 
@@ -28,10 +27,10 @@ const {user}=useAuth()
 
 
       <Routes>
-        <Route index path="/" element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="post/:id" element={<PostDetails />} />
+        <Route index path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/post/:id" element={<PostDetails />} />
         {
          user &&
 
@@ -43,7 +42,7 @@ const {user}=useAuth()
         }
 
 
-        <Route path="*" element={<NotFound />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
 
     </Container>

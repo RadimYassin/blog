@@ -23,16 +23,16 @@ const {dispatch,posts,loading}=useGcontext()
         fetchData();
       },[]);
 
-
+      console.log(posts);
   return (
     <Container>
       {
         loading && <PlaceholderComponent/>
       }
       {
-        posts.map(i => {
+        posts.map((i,index)=> {
           return (
-            <Post CommentIcon={true}  key={i._id} item={i} />
+            <Post CommentIcon={true} key={index}  item={i} />
           )
         })
       }

@@ -13,9 +13,6 @@ export default function PostDetails() {
      const {dispatch}=useGcontext()
     const { id } = useParams()
 
-
-
-
     const fetchData = async () => {
         setLoading(true)
         try {
@@ -35,8 +32,6 @@ export default function PostDetails() {
          fetchData()
 
     }, [])
-
-   
     return (
         <Container>
 
@@ -45,7 +40,7 @@ export default function PostDetails() {
                 <>
                     <Breadcrumb aria-label="breadcrumb">
                         <ol className="breadcrumb">
-                            <li className="breadcrumb-item"><Link to={"/"}>Home</Link></li>
+                            <li className="breadcrumb-item"><Link to={"/home"}>Home</Link></li>
                             <li className="breadcrumb-item active" aria-current="page">PostDetails</li>
                         </ol>
                     </Breadcrumb>

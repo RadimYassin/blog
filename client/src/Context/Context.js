@@ -10,7 +10,7 @@ const init ={
     posts:[],
     loading:true,
     error:"",
-    Comment:[]
+    Comment:[],
 }
 
 

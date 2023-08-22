@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineLike, AiOutlineInfoCircle, AiFillLike } from "react-icons/ai"
 import { VscComment } from "react-icons/vsc"
 
@@ -6,22 +6,24 @@ import { Main, Img, Card } from './style'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useCookies } from 'react-cookie'
+import { useAuth } from '../../hooks/useAuth'
+import { useGcontext } from '../../hooks/useGcontext'
 export default function Post({ item, CommentIcon }) {
     const [like, setLike] = useState(false)
     const [cookies, __] = useCookies(["access_token"])
-
+    const { user } = useAuth()
+    const { dispatch } = useGcontext()
     const handelLiked = async (id) => {
         try {
-            const res = await axios.post("http://localhost:4000/api/post/" + id+"/like", {}, {
+            const res = await axios.post("http://localhost:4000/api/post/" + id + "/like", {}, {
                 headers: {
                     'Authorization': `Bearer ${cookies.access_token}`,
                 }
             })
-            if (res.status === 200) {
-                setLike(true)
 
+            if (res.status === 200) {
+                dispatch({ type: "Add_likes", payload: id, user: user })
             }
-            // console.log(res.data.message);
         } catch (error) {
             console.log(error);
         }
@@ -30,16 +32,12 @@ export default function Post({ item, CommentIcon }) {
 
     const handelunLiked = async (id) => {
         try {
-            const res = await axios.post("http://localhost:4000/api/post/" + id+"/unlike", {}, {
+            const res = await axios.post("http://localhost:4000/api/post/" + id + "/unlike", {}, {
                 headers: {
                     'Authorization': `Bearer ${cookies.access_token}`,
                 }
             })
-            if (res.status === 200) {
-                setLike(false)
-
-            }
-            console.log(res.data.message);
+            dispatch({ type: "UNlike", payload: id, user: user })
         } catch (error) {
             console.log(error);
         }
@@ -67,11 +65,11 @@ export default function Post({ item, CommentIcon }) {
 
 
                         <div className='w-100 d-flex justify-content-between   '>
-                {
-                    like ===true ?<AiFillLike onClick={() => handelunLiked(item._id)} /> :
-      
-                                    <AiOutlineLike onClick={() => handelLiked(item._id)} />          }
-                            {CommentIcon === true && <Link to={`post/${item._id}`}> <VscComment /></Link>}
+
+                            <AiFillLike onClick={() => { handelunLiked(item._id) }} />
+
+                            <AiOutlineLike onClick={() => handelLiked(item._id)} />
+                            {CommentIcon === true && <Link to={`/post/${item._id}`}> <VscComment /></Link>}
 
                             <AiOutlineInfoCircle />
 

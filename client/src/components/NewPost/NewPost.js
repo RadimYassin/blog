@@ -14,25 +14,15 @@ export default function NewPost() {
         event.preventDefault();
         const data = { title, bio, image }
 
-        try {
-            const res = await axios.post("http://localhost:4000/api/CreatePost", data, {
+            await axios.post("http://localhost:4000/api/CreatePost", data, {
                 headers: {
                     'Authorization': `Bearer ${cookies.access_token}`,
 
                     "Content-Type": "multipart/form-data"
                 }
             })
-            if (res.status===200) {
-                nav("/")
-            }
-          
-       
-
-        } catch (error) {
-            console.log(error);
-        }
-
-
+        
+              nav("/home")
     }
     return (
         <Container>
@@ -42,7 +32,7 @@ export default function NewPost() {
                 </h1>
 
                 <div className='form-content'>
-                    <form onSubmit={handelSubmit} encType="multipart/form-data">
+                    <form onSubmit={(e)=>handelSubmit(e)} encType="multipart/form-data">
                         <div className="input-box">
                             <label className="input-label">title : </label>
                             <input placeholder="type title of post " value={title} onChange={e => setTitle(e.target.value)} className="input" name="text" type="text" />
