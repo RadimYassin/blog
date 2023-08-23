@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { styled } from "styled-components";
-import NavbarC from "./components/Navbar/Navbar";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from "react-router-dom";
@@ -12,6 +11,7 @@ import NewPost from "./components/NewPost/NewPost";
 // import { useFetch } from "./hooks/useFetch";
 import PostDetails from "./components/PostDetails/PostDetails";
 import { useAuth } from "./hooks/useAuth";
+import Navbar2 from "./components/Navbar/Navbar";
 
 function App() {
 
@@ -23,8 +23,7 @@ function App() {
 const {user}=useAuth()
   return (
     <Container className="App">
-      <NavbarC />
-
+       <Navbar2/>
 
       <Routes>
         <Route index path="/home" element={<Home />} />

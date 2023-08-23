@@ -1,61 +1,31 @@
-
-import { Link, useNavigate } from 'react-router-dom';
-import { Container } from "./style"
-import { useAuth } from '../../hooks/useAuth';
-import { useCookies } from 'react-cookie';
-function NavbarC() {
-  
-const {dispatch,user }=useAuth()
-const [cookies, setCookies,removeToken] = useCookies(["access_token"])
-  const nav = useNavigate()
-  const handelclick = () => {
- // remove user from storage
- localStorage.removeItem("userId")
-// removeres.cookie('name', value);
-
-removeToken(['access_token']);
- // dispatch logout action
-
- dispatch({type:"LOGOUT"})
-    nav("/login")
-  }
-
-  return (
-    <Container>
-      <div className='content'>
-        <div className='logo'>
-          <h3>Blog</h3>
-        </div>
-        <nav>
-         {
-          user && <>
-                 <Link to={"/newPost"}>new post</Link>
-                
-                <button className='logOut' onClick={handelclick} >   logout</button>
-          
-          </> 
-         }
-   {
-          user==null && <>
-               <Link to={"/login"}>login</Link>
-                <Link to={"/register"}>register</Link>
-          
-          </> 
-         }
-               
+import { styled } from 'styled-components'
+import Burger from './Burger'
+const Nav = styled.nav`
+  margin:0 auto;
+    max-width:1400px;
+width:100%;
+height:100%;
+padding:10px 0px;
+display:flex;
+justify-content: space-between;
 
 
-            
-
-          
-
-
-
-        </nav>
-      </div>
-    </Container>
-  );
+.logo{
+    padding:15px 20px;
 }
 
-export default NavbarC;
+`
+export default function Navbar() {
+    return (
+        <div style={{height:"80px"}}>
+            <Nav>
+                <div className='logo'>
+                    <h3>
+                        blog
+                    </h3>                      </div>
+                <Burger />
+            </Nav>
+        </div>
 
+    )
+}
