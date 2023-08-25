@@ -3,6 +3,7 @@ import { Container } from "./style"
 import axios from 'axios'
 import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
+import Breadcrumb from '../Partials/Breadcrumb'
 export default function NewPost() {
     const [cookies, __] = useCookies(["access_token"])
     const [title, setTitle] = useState("")
@@ -12,24 +13,25 @@ export default function NewPost() {
 
     const handelSubmit = async (event) => {
         event.preventDefault();
-        const data = { title, bio, image }
+        
 
-            await axios.post("http://localhost:4000/api/CreatePost", data, {
+            await axios.post("http://localhost:4000/api/CreatePost", {title:title, bio:bio, image:image}, {
                 headers: {
                     'Authorization': `Bearer ${cookies.access_token}`,
 
                     "Content-Type": "multipart/form-data"
                 }
             })
+                nav("/")
+            
         
-              nav("/home")
+            
     }
     return (
         <Container>
+      
             <main >
-                <h1>
-                    create new post :
-                </h1>
+            <Breadcrumb currentPage="createPost"/>
 
                 <div className='form-content'>
                     <form onSubmit={(e)=>handelSubmit(e)} encType="multipart/form-data">

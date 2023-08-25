@@ -57,13 +57,6 @@ flex-direction:row;
 
 `
 
-export const Breadcrumb=styled.nav`
-  
-  margin:10px auto;
-  max-width:1400px;
-  padding:10px 0px;
-
-`
 
 
 export const Form = styled.form`

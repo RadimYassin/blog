@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {Container,Form} from "./style"
 import axios  from "axios"
 import  {useCookies} from "react-cookie"
-import { json, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 export default function Login() {
 const [email,setEmail]=useState("")
@@ -19,7 +19,7 @@ const nav=useNavigate()
             window.localStorage.setItem("userId",res.data.userId)
             dispatch({type:"LOGIN",payload:res.data.userId})
             setCookies("access_token",res.data.token)
-            nav("/home")
+            nav("/")
          
           }
     }

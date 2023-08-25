@@ -7,12 +7,16 @@ export const Container = styled.div`
     margin:4em auto;
     max-width:1200px;
     display:flex;
-
+nav{
+width:100%
+}
     flex-direction:column;
     .form-content{
         width:100%;
         padding:20px 0px;
+
         form   {
+
                             .input {
                 position: relative;
                 width:100%;

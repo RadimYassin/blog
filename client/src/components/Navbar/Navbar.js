@@ -4,10 +4,11 @@ const Nav = styled.nav`
   margin:0 auto;
     max-width:1400px;
 width:100%;
-height:100%;
+
 padding:10px 0px;
 display:flex;
 justify-content: space-between;
+
 
 
 .logo{
@@ -17,7 +18,7 @@ justify-content: space-between;
 `
 export default function Navbar() {
     return (
-        <div style={{height:"80px"}}>
+        <div style={{height:"80px",boxShadow:"rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;"}}>
             <Nav>
                 <div className='logo'>
                     <h3>

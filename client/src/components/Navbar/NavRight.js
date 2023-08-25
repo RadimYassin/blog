@@ -9,6 +9,8 @@ const Ul=styled.ul`
 list-style:none;
 display: flex;
 flex-flow: row nowrap;
+justify-content:space-between;
+align-items:center;
 li{
     padding:18px 10px;
     a{
@@ -42,6 +44,7 @@ li{
 
 @media (max-width: 768px) {
     flex-flow: column nowrap;
+    justify-content:start;
     background-color:rgba(57, 118, 172, .98);
     position:fixed;
     transform:${({ open }) => open ? "translateX(0)" : "translateX(100%)"};

@@ -1,5 +1,4 @@
 import React from "react";
-import { styled } from "styled-components";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from "react-router-dom";
@@ -11,7 +10,8 @@ import NewPost from "./components/NewPost/NewPost";
 // import { useFetch } from "./hooks/useFetch";
 import PostDetails from "./components/PostDetails/PostDetails";
 import { useAuth } from "./hooks/useAuth";
-import Navbar2 from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
 
@@ -20,22 +20,21 @@ function App() {
 
 
 
-const {user}=useAuth()
+  const { user } = useAuth()
   return (
-    <Container className="App">
-       <Navbar2/>
-
+    <div >
+<Navbar/>
       <Routes>
-        <Route index path="/home" element={<Home />} />
+        <Route index path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/post/:id" element={<PostDetails />} />
         {
-         user &&
+          user &&
 
           <>
             <Route path="newpost" element={<NewPost />} />
-           
+
           </>
 
         }
@@ -43,17 +42,9 @@ const {user}=useAuth()
 
         <Route path="/*" element={<NotFound />} />
       </Routes>
-
-    </Container>
+      <Footer />
+    </div>
   );
 }
 
 export default App;
-
-
-export const Container = styled.div`
-/* *{
-  padding:0;
-  margin:0;
-} */
-`

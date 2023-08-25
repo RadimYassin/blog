@@ -3,8 +3,13 @@ import { styled } from "styled-components";
 export const Container = styled.div`
 
 width:100%;
-
+position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
 .form-content{
+    margin-top:2em;
     display:flex;
 justify-content:center;
 align-items:center;
@@ -23,15 +28,12 @@ align-items:center;
 
 export const Form=styled.form`
    width:50%;
-   @media screen and (max-width:960px){
-      width:80%;
-    
-      
-    }
+
+
    
     
         
-                        .input {
+             .input {
             position: relative;
             width:100%;
             border: none;
@@ -118,6 +120,9 @@ export const Form=styled.form`
             .buttonCreate:hover {
                 background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
                 }
-                    
+                @media  (max-width:767px){
+      width:80%;
+      
+    }
 
 `

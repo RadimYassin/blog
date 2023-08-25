@@ -10,44 +10,22 @@ import { useAuth } from '../../hooks/useAuth'
 import { useGcontext } from '../../hooks/useGcontext'
 export default function Post({ item, CommentIcon }) {
     const [like, setLike] = useState(false)
+    const [likelength, setLikelength] = useState(0)
+
     const [cookies, __] = useCookies(["access_token"])
     const { user } = useAuth()
-    const { dispatch } = useGcontext()
-    const handelLiked = async (id) => {
-        dispatch({ type: "Add_likes", payload: id, user: user })
+    const { handelLiked ,handelunLiked} = useGcontext()
+
+
+    const OnLiked = (id,c) => {
+        handelLiked(id,user,c)
         setLike(true)
-        try {
-            const res = await axios.post("http://localhost:4000/api/post/" + id + "/like", {}, {
-                headers: {
-                    'Authorization': `Bearer ${cookies.access_token}`,
-                }
-            })
-
-
-        } catch (error) {
-            console.log(error);
-        }
-
     }
-
-    const handelunLiked = async (id) => {
-        dispatch({ type: "UNlike", payload: id, user: user })
+    const OnUnLiked = (id,c) => {
+        handelunLiked(id,user,c)
         setLike(false)
-
-        try {
-            const res = await axios.post("http://localhost:4000/api/post/" + id + "/unlike", {}, {
-                headers: {
-                    'Authorization': `Bearer ${cookies.access_token}`,
-                }
-            })
-
-
-
-        } catch (error) {
-            console.log(error);
-        }
-
     }
+   
     // check user if liked this  post
 
     useEffect(() => {
@@ -83,7 +61,7 @@ export default function Post({ item, CommentIcon }) {
 
                             <div className=' d-flex justify-content-between align-items-center '>
                                 {
-                                    like ? <AiFillLike style={{ color: "rgba(57, 118, 172, 1)" }} onClick={() => { handelunLiked(item._id) }} /> : <AiOutlineLike onClick={() => handelLiked(item._id)} />
+                                    like ? <AiFillLike style={{ color: "rgba(57, 118, 172, 1)" }} onClick={() => { OnUnLiked(item._id,cookies.access_token) }} /> : <AiOutlineLike onClick={() => OnLiked(item._id,cookies.access_token)} />
                                 }
                                 {
                                     item.likes && <p style={{ margin: "1.2px" }} className='text-muted '>{item.likes.length == 0 ? "" : item.likes.length}</p>
