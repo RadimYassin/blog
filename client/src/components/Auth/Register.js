@@ -29,7 +29,9 @@ export default function Register() {
     }
     return (
         <Container>
+                 
         <div className='form-content'>
+      
          <Form  onSubmit={handelSubmit}>
          <div className="input-box">
                  <label className="input-label">firstName : </label>

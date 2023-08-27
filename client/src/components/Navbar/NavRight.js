@@ -4,7 +4,7 @@ import { useAuth } from '../../hooks/useAuth'
 import { useCookies } from 'react-cookie';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Ul=styled.ul`
+const Ul = styled.ul`
 
 list-style:none;
 display: flex;
@@ -64,7 +64,7 @@ a{
 }
 
 `
-export default function NavRight({open}) {
+export default function NavRight({ open }) {
     const { dispatch, user } = useAuth()
     const [cookies, setCookies, removeToken] = useCookies(["access_token"])
     const nav = useNavigate()
@@ -82,27 +82,33 @@ export default function NavRight({open}) {
     return (
         <Ul open={open}>
             {
-            user && <>
-             <li><Link to={"/newPost"}>new post</Link></li> 
+                user && <>
+                    <li><Link to={"/newPost"}>new post</Link></li>
+                    <li>
+                        <Link to={"/profile"}>
 
-             <li><button className='logOut' onClick={handelclick} >   logout</button></li> 
+                            profile
+                        </Link>
+                    </li>
+                    <li><button className='logOut' onClick={handelclick} >   logout</button></li>
 
-            </>
-          }
+                </>
+            }
 
-{
-            user == null && <>
-             <li>
-                <Link to={"/login"}>login</Link>
-                </li> 
-                <li>
-                <Link to={"/register"}>register</Link>
+            {
+                user == null && <>
+                    <li>
+                        <Link to={"/login"}>login</Link>
+                    </li>
+               
+                    <li>
+                        <Link to={"/register"}>register</Link>
 
-                </li>
+                    </li>
 
-            </>
-          }
-          
+                </>
+            }
+
         </Ul>
     )
 }

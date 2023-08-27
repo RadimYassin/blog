@@ -4,7 +4,6 @@ export const Main = styled.section`
 
      margin:0 auto;
     max-width:1400px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     border-radius:4px;
 
     svg{
@@ -40,6 +39,7 @@ export const Card = styled.div`
 display:flex;
 justify-content:center;
 flex-direction:row;
+box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 @media  (max-width:1400px){
 
   flex-direction:column;

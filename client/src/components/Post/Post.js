@@ -4,28 +4,28 @@ import { VscComment } from "react-icons/vsc"
 
 import { Main, Img, Card } from './style'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 import { useCookies } from 'react-cookie'
 import { useAuth } from '../../hooks/useAuth'
 import { useGcontext } from '../../hooks/useGcontext'
+import PostInfo from '../PostInfo/PostInfo'
 export default function Post({ item, CommentIcon }) {
     const [like, setLike] = useState(false)
     const [likelength, setLikelength] = useState(0)
 
     const [cookies, __] = useCookies(["access_token"])
     const { user } = useAuth()
-    const { handelLiked ,handelunLiked} = useGcontext()
+    const { handelLiked, handelunLiked } = useGcontext()
 
 
-    const OnLiked = (id,c) => {
-        handelLiked(id,user,c)
+    const OnLiked = (id, c) => {
+        handelLiked(id, user, c)
         setLike(true)
     }
-    const OnUnLiked = (id,c) => {
-        handelunLiked(id,user,c)
+    const OnUnLiked = (id, c) => {
+        handelunLiked(id, user, c)
         setLike(false)
     }
-   
+
     // check user if liked this  post
 
     useEffect(() => {
@@ -44,7 +44,7 @@ export default function Post({ item, CommentIcon }) {
 
 
             <div className="w-100">
-                <Card className="card  box-shadow ">
+                <Card className=" ">
                     <Img className="card-img-left " alt="IMG" src={`/imgs/${item.image}`} data-holder-rendered="true" />
                     <div className="card-body d-flex flex-column align-items-start p-5 pb-0">
                         <strong className="d-inline-block mb-2 h3">{item.title}</strong>
@@ -61,19 +61,16 @@ export default function Post({ item, CommentIcon }) {
 
                             <div className=' d-flex justify-content-between align-items-center '>
                                 {
-                                    like ? <AiFillLike style={{ color: "rgba(57, 118, 172, 1)" }} onClick={() => { OnUnLiked(item._id,cookies.access_token) }} /> : <AiOutlineLike onClick={() => OnLiked(item._id,cookies.access_token)} />
+                                    like ? <AiFillLike style={{ color: "rgba(57, 118, 172, 1)" }} onClick={() => { OnUnLiked(item._id, cookies.access_token) }} /> : <AiOutlineLike onClick={() => OnLiked(item._id, cookies.access_token)} />
                                 }
-                                {
-                                    item.likes && <p style={{ margin: "1.2px" }} className='text-muted '>{item.likes.length == 0 ? "" : item.likes.length}</p>
 
-                                }
                             </div>
 
 
                             {CommentIcon === true && <Link to={`/post/${item._id}`}> <VscComment /></Link>}
 
-                            <AiOutlineInfoCircle />
-
+                        
+                            <PostInfo id={item._id} children={    <AiOutlineInfoCircle />}/>
                         </div>
                     </div>
 

@@ -8,6 +8,7 @@ export const contextP=createContext()
 
 const init ={
     posts:[],
+    post:{},
     loading:true,
     error:"",
     Comment:[],

@@ -12,6 +12,7 @@ import PostDetails from "./components/PostDetails/PostDetails";
 import { useAuth } from "./hooks/useAuth";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
+import Profile from "./components/Profile/Profile";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route index path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/register" element={<Register />} />
         <Route path="/post/:id" element={<PostDetails />} />
         {

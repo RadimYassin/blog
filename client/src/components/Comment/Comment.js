@@ -3,10 +3,9 @@ import { Main, Form } from "./style"
 import { useGcontext } from '../../hooks/useGcontext'
 import { useCookies } from 'react-cookie'
 import axios from 'axios'
-import { SpinnerRoundOutlined } from 'spinners-react';
 import { AiOutlineDelete } from 'react-icons/ai'
 import { useAuth } from '../../hooks/useAuth'
-export default function Comment({ id, loading }) {
+export default function Comment({ id }) {
     const [comment, setComment] = useState("")
     const { dispatch, Comment } = useGcontext()
 
@@ -69,13 +68,10 @@ export default function Comment({ id, loading }) {
             </Form>
             <div className='mt-5'>
 
-                {
-                    loading == true && <div className="mt-5 d-flex justify-content-center">
-                        <SpinnerRoundOutlined size={100} thickness={100} speed={100} color="rgba(57, 118, 172, 1)" />                    </div>
-                }
+               
 
                 {
-                    (Comment.length > 0 && loading == false) && (
+                    Comment.length > 0  && (
                         Comment.map((i) => {
                             return (<div key={i._id} className="card mb-4">
                                 <div className="card-body">
@@ -105,7 +101,7 @@ export default function Comment({ id, loading }) {
                         })
                     )
                 }
-                {(Comment.length==0 && loading == false) && <p className='text-muted' style={{fontSize:"30px"}}>No comment yet !!</p>}
+                {Comment.length==0  && <p className='text-muted' style={{fontSize:"30px"}}>No comment yet !!</p>}
             </div>
 
 
