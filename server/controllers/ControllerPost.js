@@ -1,6 +1,7 @@
 const { default: mongoose } = require("mongoose")
 const Post = require("../models/Post")
 const Comment = require("../models/Comment")
+const User = require("../models/User")
 
 const getAllPosts = async (req, res) => {
   try {
@@ -65,19 +66,24 @@ const deleteOne = async (req, res) => {
 
 const likePost = async (req, res) => {
   try {
-    const post = await Post.findById({ _id: req.params.id });
+    const post = await Post.findById({ _id:req.params.id} );
+    const user = await User.findById({ _id:req.user._id} );
+
     if (!post) {
       return res.status(404).send('Post not found');
     }
     // Check if the user has already liked the post
     if (post.likes.includes(req.user._id)) {
-      return res.json({ message: 'You have already liked this post' });
+      return res.status(201).json({ message:'You have already liked this post'} );
     }
 
-    post.likes.push(req.user._id); // Push user ID to likes array
+    post.likes.push(req.user._id);// Push user ID to likes array
+    user.liked.push(post._id)
     await post.save();
+    await user.save()
+    
 
-    res.status(200).json({ message: 'like is ok' });
+    res.status(200).json({ userId:req.user._id});
   } catch (error) {
     console.error('Error liking post:', error);
     res.status(500).json({ message: 'Internal Server Error' });
@@ -107,4 +113,11 @@ const unlikePost = async (req, res) => {
 }
 
 
-module.exports = { getAllPosts, CreatePost, SelectPost, likePost,unlikePost }
+
+
+
+const GetInfoPost=async(req,res)=>{
+req.json({message:"salam"})
+}
+
+module.exports = { getAllPosts, CreatePost, SelectPost, likePost,unlikePost,GetInfoPost}
