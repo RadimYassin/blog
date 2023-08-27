@@ -9,7 +9,7 @@ position: absolute;
       margin-right: -50%;
       transform: translate(-50%, -50%);
 .form-content{
-    margin-top:2em;
+    margin-top:9em;
     display:flex;
 justify-content:center;
 align-items:center;
@@ -98,7 +98,7 @@ export const Form=styled.form`
             .input-btn{
                 display: flex;
             flex-direction: column;
-            margin:50px 0px;
+            margin:20px 0px;
             }
             .buttonCreate{
                 background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);

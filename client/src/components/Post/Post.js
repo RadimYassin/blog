@@ -8,9 +8,11 @@ import { useCookies } from 'react-cookie'
 import { useAuth } from '../../hooks/useAuth'
 import { useGcontext } from '../../hooks/useGcontext'
 import PostInfo from '../PostInfo/PostInfo'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Post({ item, CommentIcon }) {
     const [like, setLike] = useState(false)
-    const [likelength, setLikelength] = useState(0)
 
     const [cookies, __] = useCookies(["access_token"])
     const { user } = useAuth()
@@ -18,10 +20,17 @@ export default function Post({ item, CommentIcon }) {
 
 
     const OnLiked = (id, c) => {
+        if (!cookies.access_token) {
+            toast.error('🦄Please, login');
+            return
+        }
         handelLiked(id, user, c)
         setLike(true)
     }
     const OnUnLiked = (id, c) => {
+        if (!cookies.access_token) {
+            alert("login please")
+        }
         handelunLiked(id, user, c)
         setLike(false)
     }
@@ -69,13 +78,23 @@ export default function Post({ item, CommentIcon }) {
 
                             {CommentIcon === true && <Link to={`/post/${item._id}`}> <VscComment /></Link>}
 
-                        
-                            <PostInfo id={item._id} children={    <AiOutlineInfoCircle />}/>
+
+                            <PostInfo id={item._id} children={<AiOutlineInfoCircle />} />
                         </div>
                     </div>
 
                 </Card>
             </div>
+            <ToastContainer
+                position="top-center"
+                autoClose={2000}
+                newestOnTop
+                closeOnClick
+                rtl
+                pauseOnFocusLoss
+                draggable
+                theme="light"
+            />
         </Main>
     )
 }
