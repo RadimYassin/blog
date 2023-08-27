@@ -9,13 +9,14 @@ const UserSchema= new Schema({
     lastName:{type:String,required:true},
     email:{type:String,required:true,unique:true},
     password:{type:String,required:true},
+    image:{type:String,required:true},
     liked: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }] 
 
 })
 
-UserSchema.statics.register=async function (firstName,lastName,email,password) {
+UserSchema.statics.register=async function (firstName,lastName,email,password,image) {
     
-    if (!firstName || ! lastName || !email || !password) {
+    if (!firstName || ! lastName || !email || !password || !image) {
         throw Error(" All inputs must be filled")
     }
     // check user if exist in db
@@ -28,7 +29,7 @@ UserSchema.statics.register=async function (firstName,lastName,email,password) {
     const salt= await bcryptjs.genSalt(10);
     const hash=await bcryptjs.hash(password,salt)
 
-    const Newuser=await this.create({firstName,lastName,email,password:hash})
+    const Newuser=await this.create({firstName,lastName,email,password:hash,image})
 
     return Newuser
 }
