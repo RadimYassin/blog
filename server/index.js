@@ -25,7 +25,7 @@ app.use("/api",UserRoutes);
 app.use("/api",CommentRoutes);
 // connect the db 
 mongose.connect(process.env.DB_URL).then(()=>{
-app.listen(4000,()=>{
+app.listen(process.env.PORT || 4000,()=>{
     console.log("4000 listen");
 })
 
