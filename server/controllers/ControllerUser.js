@@ -11,8 +11,8 @@ const UserRegister=async(req,res)=>{
     try {
         const {firstName,lastName,email,password}=req.body
 
-        const {image}=req.file.filename
-        const user = await User.register(firstName,lastName,email,password,image)
+       
+        const user = await User.register(firstName,lastName,email,password)
       res.status(200).json({info:"ok"});
     } catch (error) {
         res.json({message:error.message});

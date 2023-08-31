@@ -14,7 +14,9 @@ const app=express()
 
 
 
-app.use(cors());
+app.use(cors({
+    origin:["http://localhost:3000/","https://blog-yassine-frontend.onrender.com"]
+}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
