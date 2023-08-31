@@ -22,7 +22,7 @@ export default function Register() {
         e.preventDefault()
 
         try {
-            const res=await axios.post("http://localhost:4000/api/user/register",data)
+            const res=await axios.post("https://blog-yassine-api.onrender.com/api/user/register",data)
 
             console.log(res.data);
             nav("/login")

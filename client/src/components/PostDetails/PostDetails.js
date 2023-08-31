@@ -24,7 +24,7 @@ export default function PostDetails() {
         setLoading(true)
         try {
             // Replace 'API_URL' with the actual URL of your API or backend endpoint
-            const response = await axios.get(`http://localhost:4000/api/post/${id}`);
+            const response = await axios.get(`https://blog-yassine-api.onrender.com/api/post/${id}`);
             dispatch({ type: "Fetch_Post", payload: response.data.post.info });
             dispatch({ type: "Fetch_Comment", payload: response.data.post.comment });
             setLoading(false);

@@ -17,7 +17,7 @@ export default function Comment({ id }) {
         e.preventDefault()
         const data = { text: comment, id }
         try {
-            const res = await axios.post("http://localhost:4000/api/comment", data, {
+            const res = await axios.post("https://blog-yassine-api.onrender.com/api/comment", data, {
                 headers: {
                     'Authorization': `Bearer ${cookies.access_token}`
                 }
@@ -41,7 +41,7 @@ export default function Comment({ id }) {
     const handelDelete = async (id) => {
 
         try {
-            const res = await axios.delete(`http://localhost:4000/api/comment/${id}`, {
+            const res = await axios.delete(`https://blog-yassine-api.onrender.com/api/comment/${id}`, {
                 headers: {
                     'Authorization': `Bearer ${cookies.access_token}`
                 }

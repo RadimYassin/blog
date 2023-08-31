@@ -13,7 +13,7 @@ const {dispatch,posts,loading}=useGcontext()
 
        const fetchData = async () => {
           // Replace 'API_URL' with the actual URL of your API or backend endpoint
-         await axios.get("http://localhost:4000/api").then(res=>   dispatch({type:"Fetch_Data",payload:res.data}))
+         await axios.get("https://blog-yassine-api.onrender.com").then(res=>   dispatch({type:"Fetch_Data",payload:res.data}))
        
          .catch(error=>{
           dispatch({type:"Fetch_Error"})
